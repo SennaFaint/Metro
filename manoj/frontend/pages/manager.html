@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Manager Dashboard — TimeTrack</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <div class="logo">⏰ TimeTrack</div>
+            <nav class="nav-links">
+                <a href="manager.html">Dashboard</a>
+                <a href="add-employee.html">Add Employee</a>
+                <a href="list-employees.html">List Employees</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            
+            <a href="#" class="btn-logout" onclick="logoutApp()">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;margin-bottom:24px;">
+            <h2 style="margin:0">Manager Dashboard — Store Overview</h2>
+            <button onclick="handleAddStore()" style="background:#28a745;color:white;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:1rem;transition:all 0.2s ease;display:flex;align-items:center;gap:8px;" onmouseover="this.style.background='#218838';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(40,167,69,0.3)'" onmouseout="this.style.background='#28a745';this.style.transform='none';this.style.boxShadow='none'">
+                <span style="font-size:1.1rem;">+</span> Add Store
+            </button>
+        </div>
+        <div id="managerRoot">
+            <div id="managerCards"></div>
+        </div>
+    </div>
+    
+    <!-- Add Store Modal -->
+    <div id="addStoreModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>➕ Add New Store</h3>
+                <button class="modal-close" onclick="closeAddStoreModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="addStoreError" class="modal-error"></div>
+                <form id="addStoreForm">
+                    <div class="modal-form-group">
+                        <label for="storeName">Store Name *</label>
+                        <input type="text" id="storeName" name="storeName" placeholder="Enter store name (e.g., Lawrence)" required autofocus>
+                    </div>
+                    <div style="background:#e7f3ff;padding:16px;border-radius:8px;margin-top:16px;border-left:4px solid #007bff;">
+                        <p style="margin:0;color:#004085;font-size:0.9rem;font-weight:600;">ℹ️ Login Credentials</p>
+                        <p style="margin:8px 0 0 0;color:#004085;font-size:0.85rem;">Username will be generated from store name (lowercase, no spaces)</p>
+                        <p style="margin:4px 0 0 0;color:#004085;font-size:0.85rem;">Password will be: <strong>username123</strong></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn modal-btn-secondary" onclick="closeAddStoreModal()">Cancel</button>
+                <button type="button" class="modal-btn modal-btn-primary" onclick="submitAddStore()">Add Store</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="static/js/script.js"></script>
+</body>
+</html>
